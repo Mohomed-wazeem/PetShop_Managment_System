@@ -24,16 +24,15 @@ const Footer = () => {
             <h5 className="text-uppercase mb-4 font-weight-bold text-info">Contact Info</h5>
             <p><i className="fas fa-home mr-3"></i> 123 Pet St, Petville, PA 12345</p>
             <p><i className="fas fa-envelope mr-3"></i> info@petshop.com</p>
-            <p><i className="fas fa-phone mr-3"></i> +1 555-123-4567</p>
-            <p><i className="fas fa-print mr-3"></i> +1 555-765-4321</p>
+            <p><i className="fas fa-phone mr-3"></i> +94-755158190</p>
           </div>
 
           <div className="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
             <h5 className="text-uppercase mb-4 font-weight-bold text-info">Follow Us</h5>
-            <a href="#" className="text-white mx-2"><i className="fab fa-facebook-f fa-lg mr-4"></i></a>
+            <a href="https://web.facebook.com/?_rdc=1&_rdr" className="text-white mx-2"><i className="fab fa-facebook-f fa-lg mr-4"></i></a>
             <a href="#" className="text-white mx-2"><i className="fab fa-twitter fa-lg mr-4"></i></a>
-            <a href="#" className="text-white mx-2"><i className="fab fa-instagram fa-lg mr-4"></i></a>
-            <a href="#" className="text-white mx-2"><i className="fab fa-linkedin fa-lg"></i></a>
+            <a href="https://www.instagram.com/mhd___wzm/" className="text-white mx-2"><i className="fab fa-instagram fa-lg mr-4"></i></a>
+            <a href="https://www.linkedin.com/in/mohomed-wazeem-27aa0928b/" className="text-white mx-2"><i className="fab fa-linkedin fa-lg"></i></a>
           </div>
           
         </div>
