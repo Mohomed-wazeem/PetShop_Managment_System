@@ -35,7 +35,7 @@ const Orders = () => {
     const deliveryCharge = 400;
     const totalPrice = order.productPrice * order.customerQuantity + deliveryCharge;
     
-    doc.text('Pet care', 20, 10);
+    doc.text('Pet zone', 20, 10);
     doc.text('Customer Information:', 20, 20);
     doc.text(`Name: ${order.customerName}`, 20, 30);
     doc.text(`Email: ${order.customerEmail}`, 20, 40);
@@ -55,7 +55,7 @@ const Orders = () => {
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4">Orders</h2>
+      <h2 className="text-left mb-4 fs-4 text-success">Order Details</h2>
       <div className="table-responsive">
         <table className="table table-striped">
           <thead>
@@ -74,7 +74,7 @@ const Orders = () => {
           </thead>
           <tbody>
             {orders.map((order, index) => (
-              <tr key={index}>
+              <tr key={index} className="text-center">
                 <td>{order.customerName}</td>
                 <td>{order.customerEmail}</td>
                 <td>{order.customerAddress}</td>
@@ -84,9 +84,9 @@ const Orders = () => {
                 <td>{order.productDelivery === '2' ? new Date(order.pickupDate).toLocaleDateString() : 'Delivery'}</td>
                 <td>{order.productName}</td>
                 <td>${order.productPrice}</td>
-                <td className="text-center">
-                  <button className="btn btn-link-style  me-2" onClick={() => handleOrderAction(order._id, 'deliver')}>Deliver</button>
-                  <button className="btn btn-light  me-2" onClick={() => handleOrderAction(order._id, 'download')}>Download</button>
+                <td>
+                  <button className="btn btn-link-style" onClick={() => handleOrderAction(order._id, 'deliver')}>Deliver</button>
+                  <button className="btn btn-light" onClick={() => handleOrderAction(order._id, 'download')}>Download</button>
                 </td>
               </tr>
             ))}

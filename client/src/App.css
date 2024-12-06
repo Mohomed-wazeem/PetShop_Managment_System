@@ -37,6 +37,48 @@
   to { opacity: 1; }
 }
 
+.custom-button {
+  background-color: white; /* White background */
+  color: black; /* Black text for readability */
+   /* Green border for a professional look */
+  padding: 10px 20px; /* Spacing for a larger, clean look */
+  transition: all 0.3s ease-in-out; /* Smooth hover transition */
+}
+
+.custom-button:hover {
+  background-color: #28a745; /* Green background on hover */
+  color: white; /* White text for contrast */
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.stylish-underline {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 100%; /* Ensure it takes up full width of its container */
+}
+
+.stylish-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -10px; /* Adjust the distance below the text */
+  left: 10%;
+  width: 80%; /* Cover 80% of the container width */
+  height: 2px; /* Thin underline */
+  background-color: #aebcce; /* Solid color, change as needed */
+  border-radius: 2px;
+}
+
+ /* ----home slider anim------ */
+
+
+
+
+
+
+
+ 
+
 .header-welcome, .header-offers {
   background-color: #ADD8E6; /* Light blue background color */
   padding: 10px; /* Padding inside the header */

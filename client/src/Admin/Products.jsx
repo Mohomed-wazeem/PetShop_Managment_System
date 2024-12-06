@@ -31,7 +31,7 @@ const Products = () => {
         <div className="col-12 text-center">
         </div>
       </div>
-      <h3 className="text-center mb-4"> Pets and Accessories</h3>
+      <h3 className="text-left mb-4 fs-4 text-success"> Pets and Accessories</h3>
 
       <div className="row w-100 flex-grow-1 overflow-auto">
         <div className="col-12">

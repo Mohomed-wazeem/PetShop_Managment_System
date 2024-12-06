@@ -1,15 +1,31 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Carousel, Card} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import petBg from '../images/petbg1.jpg';
 import aboutImage from '../images/Aboutimg.jpg';
 import visionIcon from '../images/vission.png';
 import missionIcon from '../images/mission.jpg';
+import Homebnr from '../images/supervite-dog.webp';
+import BirdFood from '../images/bird-food.png';
+import DogFood from '../images/dog-food.png';
+import CatFood from '../images/cat-food.png';
+import RabbitFood from '../images/Rabbit-food.png';
 import { useInView } from 'react-intersection-observer'; // Import the hook from react-intersection-observer
 
 const Home = () => {
   const [showContent, setShowContent] = useState('vision');
+
+  const categories = [
+    { img: BirdFood},
+    { img: DogFood},
+    { img: CatFood},
+    { img: RabbitFood},
+    { img: BirdFood},
+    { img: DogFood},
+    { img: RabbitFood},
+    { img: RabbitFood},
+  ];
 
   // Create refs for the sections that you want to animate
   const { ref: visionRef, inView: visionInView } = useInView({
@@ -30,14 +46,17 @@ const Home = () => {
   return (
     <div>
       <div className="hero-section" style={{ backgroundImage: `url(${petBg})` }}>
-        <Container>
-          <Row>
-            <Col md={12} className="text-center hero-text">
-              <h1>Welcome to Our Pet Shop</h1>
-              <p>Your one-stop shop for all your pet needs!</p>
-            </Col>
-          </Row>
-        </Container>
+      <Container>
+      <Row>
+  <Col md={12} className="text-center hero-text">
+    <h1>Welcome to Our Pet Shop</h1>
+    <p>Your one-stop shop for all your pet needs!</p>
+    <Button href="/AvailableItems" size="lg" className="custom-button">
+      Shop Now
+    </Button>
+  </Col>
+</Row>
+</Container>
       </div>
       <Container className="my-5">
         <Row>
@@ -86,6 +105,105 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
+
+      <Container className="my-5">
+      {/* Shop By Categories Section */}
+<Container className="my-5">
+  <Row>
+    <Col md={12} className="text-center">
+      <h2 className="stylish-underline mb-5">Shop By Categories</h2>
+    </Col>
+  </Row>
+  <Carousel
+    indicators={false}
+    interval={3000}
+    controls={true}
+    className="custom-carousel"
+  >
+    {[0, 1].map((_, index) => (
+      <Carousel.Item key={index}>
+        <Row className="justify-content-center">
+          {categories
+            .slice(index * 4, index * 4 + 4) // Show 4 items per slide
+            .map((category, i) => (
+              <Col
+                key={i}
+                md={3}
+                sm={3}
+                xs={12}
+                className="mb-4 text-center category-card"
+              >
+                <Card className="border-0">
+                  <Card.Img
+                    variant="top"
+                    src={category.img}
+                    className="rounded-circle"
+                  />
+                  <Card.Body>
+                    <Card.Title>{category.title}</Card.Title>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+        </Row>
+      </Carousel.Item>
+    ))}
+  </Carousel>
+</Container>
+
+
+      {/* Featured Products Section */}
+      <Row className="my-5">
+        <Col md={6}>
+          <Card className="text-center shadow">
+            <Card.Img variant="top" src={visionIcon} />
+            <Card.Body>
+              <Card.Title>Natural Freeze Dog Foods</Card.Title>
+              <Button variant="primary">Shop Now</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col md={3}>
+          <Card className="text-center shadow">
+            <Card.Img variant="top" src={visionIcon} />
+            <Card.Body>
+              <Card.Title>Best Quality Pet Foods</Card.Title>
+              <Button variant="primary">Shop Now</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col md={3}>
+          <Card className="text-center shadow">
+            <Card.Img variant="top" src={visionIcon} />
+            <Card.Body>
+              <Card.Title>Best Quality Pet Foods</Card.Title>
+              <Button variant="primary">Shop Now</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+
+      {/* Promotional Banner Section */}
+      <Row className="align-items-center">
+        <Col md={6}>
+          <img src={Homebnr} alt="Featured Dog" className="img-fluid rounded" />
+        </Col>
+        <Col md={6}>
+          <h2>Help Your Dog Maintain A Healthier Life</h2>
+          <p>
+            Discover our range of premium dog foods designed to promote a healthier lifestyle for
+            your furry friends.
+          </p>
+          <ul>
+            <li>24/7 Support</li>
+            <li>Pet Trial Facility</li>
+            <li>Personalized Care</li>
+            <li>Quick Delivery</li>
+          </ul>
+          <Button variant="success">Shop Now</Button>
+        </Col>
+      </Row>
+    </Container>
     </div>
   );
 };

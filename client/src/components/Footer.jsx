@@ -5,45 +5,51 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // Include FontAwesome f
 const Footer = () => {
   return (
     <footer className="bg-dark text-white pt-5 pb-4">
-      <div className="container text-center text-md-left">
-        <div className="row text-center text-md-left">
-          <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-            <h5 className="text-uppercase mb-4 font-weight-bold text-info">Pet Shop</h5>
-            <p>We provide top-notch products and services for your pets. From food to accessories, find everything you need for your furry friends.</p>
-          </div>
+      <div className="container">
+        <div className="row justify-content-center text-center">
           
-          <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+          {/* Quick Links */}
+          <div className="col-md-3 col-lg-3 col-xl-3 mb-4">
             <h5 className="text-uppercase mb-4 font-weight-bold text-info">Quick Links</h5>
-            <p><a href="#" className="text-white" style={{ textDecoration: 'none' }}>Home</a></p>
-            <p><a href="#" className="text-white" style={{ textDecoration: 'none' }}>Shop</a></p>
-            <p><a href="#" className="text-white" style={{ textDecoration: 'none' }}>About Us</a></p>
-            <p><a href="#" className="text-white" style={{ textDecoration: 'none' }}>Contact Us</a></p>
+            <p><a href="/Home" className="text-white" style={{ textDecoration: 'none' }}>Home</a></p>
+            <p><a href="/AboutUs" className="text-white" style={{ textDecoration: 'none' }}>About Us</a></p>
+            <p><a href="/ContactUs" className="text-white" style={{ textDecoration: 'none' }}>Contact Us</a></p>
           </div>
 
-          <div className="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          {/* Contact Info */}
+          <div className="col-md-3 col-lg-3 col-xl-3 mb-4">
             <h5 className="text-uppercase mb-4 font-weight-bold text-info">Contact Info</h5>
-            <p><i className="fas fa-home mr-3"></i> 123 Pet St, Petville, PA 12345</p>
-            <p><i className="fas fa-envelope mr-3"></i> info@petshop.com</p>
-            <p><i className="fas fa-phone mr-3"></i> +94-755158190</p>
+            <p><i className="fas fa-home mr-2"></i> 123 Pet St, Petville, PA 12345</p>
+            <p><i className="fas fa-envelope mr-2"></i> info@petshop.com</p>
+            <p><i className="fas fa-phone mr-2"></i> +94-755158190</p>
           </div>
 
-          <div className="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+          {/* Follow Us */}
+          <div className="col-md-3 col-lg-3 col-xl-3 mb-4">
             <h5 className="text-uppercase mb-4 font-weight-bold text-info">Follow Us</h5>
-            <a href="https://web.facebook.com/?_rdc=1&_rdr" className="text-white mx-2"><i className="fab fa-facebook-f fa-lg mr-4"></i></a>
-            <a href="#" className="text-white mx-2"><i className="fab fa-twitter fa-lg mr-4"></i></a>
-            <a href="https://www.instagram.com/mhd___wzm/" className="text-white mx-2"><i className="fab fa-instagram fa-lg mr-4"></i></a>
-            <a href="https://www.linkedin.com/in/mohomed-wazeem-27aa0928b/" className="text-white mx-2"><i className="fab fa-linkedin fa-lg"></i></a>
+            <a href="https://web.facebook.com/?_rdc=1&_rdr" className="text-white mx-2">
+              <i className="fab fa-facebook-f fa-lg"></i>
+            </a>
+            <a href="https://x.com/i/flow/login" className="text-white mx-2">
+              <i className="fab fa-twitter fa-lg"></i>
+            </a>
+            <a href="https://www.instagram.com/mhd___wzm/" className="text-white mx-2">
+              <i className="fab fa-instagram fa-lg"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/mohomed-wazeem-27aa0928b/" className="text-white mx-2">
+              <i className="fab fa-linkedin fa-lg"></i>
+            </a>
           </div>
-          
+
         </div>
 
         <hr className="mb-4" />
 
-        <div className="row align-items-center">
-        <div className="col-md-12 text-center">
+        {/* Copyright */}
+        <div className="row">
+          <div className="col-md-12 text-center">
             <p className="mb-0">© 2024 Pet Shop. All Rights Reserved.</p>
           </div>
-         
         </div>
       </div>
     </footer>

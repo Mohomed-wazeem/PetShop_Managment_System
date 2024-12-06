@@ -25,8 +25,8 @@ const Topnav = () => {
             <Nav.Link href="/Home">Home</Nav.Link>
             <Nav.Link href="/AboutUs">AboutUS</Nav.Link>
             <Nav.Link href="/AvailableItems">Available</Nav.Link>
-            <Nav.Link href="/ContactUs">Contact</Nav.Link>
-            <Link to="/AdminLogin" className='btn btn-danger mb-3'>Admin</Link>
+            <Nav.Link href="/ContactUs">Contact Us</Nav.Link>
+            {/* <Link to="/AdminLogin" className='btn btn-danger mb-3'>Admin</Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
