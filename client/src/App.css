@@ -69,7 +69,30 @@
   border-radius: 2px;
 }
 
- /* ----home slider anim------ */
+ /* ----home card css------ */
+/* In your AvailableItems.css */
+.custom-card-img {
+  object-fit: cover;
+  height: 180px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.custom-card {
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px); /* Adds a slight hover effect */
+}
+
+.description-text {
+  font-size: 14px;
+  height: 80px; /* Limit description height */
+  overflow: hidden; /* Hide overflow text */
+}
+
 
 
 
@@ -145,10 +168,13 @@
   font-size: 1.5rem;
 }
 
-.my-5 {
-  margin-top: 3rem !important;
-  margin-bottom: 3rem !important;
-}
+
+
+
+
+
+
+
 
 .text-center {
   text-align: center;
