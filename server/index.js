@@ -1,12 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const ProductModel = require('./models/Products');
 const OrderModel = require('./models/Order');
 const AdminAccount = require('./models/AdminAccount');
+const UserModel = require('./models/User');
 
 
 const app = express();
+const JWT_SECRET = 'your_jwt_secret';
+
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 
@@ -19,8 +24,80 @@ mongoose.connect('mongodb+srv://wazeem:Secret789@cluster0.x0ysh.mongodb.net/PetS
     console.error('Error connecting to MongoDB:', error.message);
   });
 
-// AdminLogin API
+ //Middleware to verify JWT
+ const authenticationToken = (req, res, next) => {
+    const token = req.headers['authorization'];
+    if(!token) return res.status(401).json({messsage: 'Access Denied'});
+
+    jwt.verify(token.split(' ')[1], JWT_SECRET, (err, user) => {
+      if(err) return res.status(403).json({message: 'Invalid Token'});
+      req.user = user;
+      next();
+    });
+ };
+
+ // User Signup API
+app.post('/signup', async (req, res) => {
+  const { username, email, password } = req.body;
+
+  try {
+    // Check if user already exists
+    const existingUser = await UserModel.findOne({ email });
+    if (existingUser) return res.status(400).json({ message: 'Email already registered' });
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Save user to the database
+    const user = new UserModel({ username, email, password: hashedPassword });
+    await user.save();
+    res.status(201).json({ message: 'User registered successfully' });
+  } catch (err) {
+    console.error('Error during signup:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
+// User Login API
 app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // Find user by email
+    const user = await UserModel.findOne({ email });
+    if (!user) return res.status(400).json({ message: 'Invalid email or password' });
+
+    // Compare passwords
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) return res.status(400).json({ message: 'Invalid email or password' });
+
+    // Generate JWT
+    const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
+    res.json({ token, message: 'Login successful' });
+  } catch (err) {
+    console.error('Error during login:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
+// Example Protected Route
+const authenticateToken = (req, res, next) => {
+  const token = req.headers['authorization'];
+  if (!token) return res.status(401).json({ message: 'Access Denied' });
+
+  jwt.verify(token.split(' ')[1], JWT_SECRET, (err, user) => {
+    if (err) return res.status(403).json({ message: 'Invalid Token' });
+    req.user = user;
+    next();
+  });
+};
+
+
+
+// Admin Login API
+app.post('/admin/login', async (req, res) => {
   const { username, password } = req.body;
 
   try {
@@ -35,6 +112,7 @@ app.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 // Get Admin details
 app.get('/admin', (req, res) => {

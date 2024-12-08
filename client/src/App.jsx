@@ -15,6 +15,8 @@ import CreateProducts from './Admin/CreateProducts';
 import UpdateProducts from './Admin/UpdateProducts';
 import Orders from './Admin/Orders';
 import Account from './Admin/Account';
+import Signup from './components/Signup';
+import Login from './components/Login';
 
 function App() {
   const location = useLocation(); // Hook to access the current route
@@ -38,6 +40,11 @@ function App() {
       {isAdminRoute && <AdminNavbar />}
       
       <Routes>
+
+        <Route path="/" element={<Home />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
+
         <Route path="/" element={<Navigate to="/Home" replace />} /> 
         <Route path="/Home" element={<Home />} /> 
         <Route path="/AboutUs" element={<AboutUs />} />
