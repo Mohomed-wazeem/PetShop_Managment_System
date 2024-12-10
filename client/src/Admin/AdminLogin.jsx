@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'React-router-dom';
 import './AdminLogin.css';
@@ -11,7 +12,7 @@ const AdminLogin = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3001/login', {
+      const response = await fetch('http://localhost:3001/admin/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

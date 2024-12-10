@@ -9,3 +9,14 @@
 .navl a:hover{
     color: rgb(0, 0, 0);
 }
+
+.bold-link {
+    font-weight: bold;
+    color: inherit; 
+    text-decoration: none; 
+}
+
+.bold-link:hover {
+    text-decoration: none; 
+}
+

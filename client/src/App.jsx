@@ -40,13 +40,10 @@ function App() {
       {isAdminRoute && <AdminNavbar />}
       
       <Routes>
-
-        <Route path="/" element={<Home />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
-
         <Route path="/" element={<Navigate to="/Home" replace />} /> 
         <Route path="/Home" element={<Home />} /> 
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/AvailableItems" element={<AvailableItems />} />
         <Route path="/ContactUs" element={<ContactUs />} />
@@ -67,3 +64,4 @@ function App() {
 }
 
 export default App;
+
