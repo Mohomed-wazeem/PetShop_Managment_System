@@ -3,8 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'React-router-dom';
 import { Link } from 'React-router-dom';
 
-import './Signup.css';
-
 const Signup = () => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' });
   const navigate = useNavigate();

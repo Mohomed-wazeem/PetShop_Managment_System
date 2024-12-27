@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar'; 
 import "./Topnav.css";
-import logo from '../images/petzone.png';
+import logo from '../images/navlogo.png';
 
 const AdminNavbar = () => {
 
@@ -10,7 +10,7 @@ const AdminNavbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('adminLoggedIn'); // Remove session
-    navigate('/AdminLogin'); // Redirect to login
+    navigate('/home');
   };
 
   return (
@@ -19,10 +19,10 @@ const AdminNavbar = () => {
       <Container>
       <Navbar.Brand href="#home">
         <img 
-            src={logo} // Replace with the path to your image
-            alt="Petzone logo" // Provide an alt text for accessibility
-            width="100" // Adjust the width as needed
-            height="30" // Adjust the height as needed
+            src={logo} 
+            alt="nav logo" 
+            width="250" 
+            height="45" 
             className="d-inline-block align-top"
           />
         </Navbar.Brand>

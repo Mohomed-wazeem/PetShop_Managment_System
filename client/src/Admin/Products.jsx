@@ -10,7 +10,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/products')
+    axios.get('http://localhost:3002/products')
       .then(result => setProducts(result.data))
       .catch(err => console.log(err));
   }, []);
@@ -18,7 +18,7 @@ const Products = () => {
 
   //Delete function to delete record from the table
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:3001/products/${id}`)
+    axios.delete(`http://localhost:3002/products/${id}`)
       .then(() => {
         setProducts(products.filter(product => product._id !== id));
       })

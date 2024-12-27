@@ -16,6 +16,7 @@ app.use(express.json({ limit: '50mb' }));
 
 // Remove deprecated options
 mongoose.connect('mongodb+srv://wazeem:Secret789@cluster0.x0ysh.mongodb.net/PetShop')
+
   .then(() => {
     console.log('Connected to MongoDB');
   })
@@ -189,7 +190,7 @@ app.get('/orders', (req, res) => {
     .catch((err) => res.status(400).json(err));
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

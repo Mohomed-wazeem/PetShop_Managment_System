@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import loading2 from '../images/loading2.gif';  // Correct import path
 import './AvailableItems.css';
 
 const AvailableItems = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);  // Add loading state
   const [showForm, setShowForm] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [formData, setFormData] = useState({
@@ -18,9 +20,15 @@ const AvailableItems = () => {
   });
 
   useEffect(() => {
-    axios.get('http://localhost:3001/products')
-      .then(result => setProducts(result.data))
-      .catch(err => console.log(err));
+    axios.get('http://localhost:3002/products')
+      .then(result => {
+        setProducts(result.data);
+        setLoading(false);  // Set loading to false once data is fetched
+      })
+      .catch(err => {
+        console.log(err);
+        setLoading(false);  // Set loading to false in case of error
+      });
   }, []);
 
   const handleOrderClick = (product) => {
@@ -60,7 +68,7 @@ const AvailableItems = () => {
       delete orderData.pickupDate;
     }
 
-    axios.post('http://localhost:3001/orders', orderData)
+    axios.post('http://localhost:3002/orders', orderData)
       .then(response => {
         console.log('Order submitted:', response.data);
         alert('Your order has been placed successfully!');
@@ -72,21 +80,30 @@ const AvailableItems = () => {
   return (
     <div className="container mt-5">
       <h2 className="text-left mb-5 fs-4 text-success">Available Items</h2>
-      <div className="row">
-        {products.map((product, index) => (
-          <div className="col-md-3 mb-4" key={index}>
-            <div className="card h-100 custom-card">
-              <img src={product.image} alt={product.name} className="card-img-top custom-card-img" />
-              <div className="card-body">
-                <h5 className="card-title">{product.name}</h5>
-                <p className="card-text opacity-75">{product.description}</p>
-                <p className="card-text"><strong>Price: </strong>${product.price}</p>
-                <button className="btn btn-success" onClick={() => handleOrderClick(product)}>Order</button>
+      
+      {loading ? (
+      <div className="text-center my-7">
+      <img src={loading2} alt="Loading..." />
+      <h3 className="text-secondary mt-2 mb-4">Loading...</h3>
+      </div>
+      
+      ) : (
+        <div className="row">
+          {products.map((product, index) => (
+            <div className="col-md-3 mb-4" key={index}>
+              <div className="card h-100 custom-card">
+                <img src={product.image} alt={product.name} className="card-img-top custom-card-img" />
+                <div className="card-body">
+                  <h5 className="card-title">{product.name}</h5>
+                  <p className="card-text opacity-75">{product.description}</p>
+                  <p className="card-text"><strong>Price: </strong>${product.price}</p>
+                  <button className="btn btn-success" onClick={() => handleOrderClick(product)}>Order</button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {showForm && (
         <div className="customer-form-container">

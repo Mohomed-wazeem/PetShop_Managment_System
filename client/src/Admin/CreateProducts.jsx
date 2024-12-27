@@ -25,7 +25,7 @@ const CreateProducts = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3001/CreateProducts", { name, description, price, image })
+      .post("http://localhost:3002/CreateProducts", { name, description, price, image })
       .then((result) => {
         console.log(result)
         navigate('/Products');
@@ -36,7 +36,9 @@ const CreateProducts = () => {
   return (
     <div className="d-flex vh-100 bg-light justify-content-center align-items-center">
       <div className='w-50 bg-white rounded p-4 shadow-lg'>
-        <h2 className="text-center mb-4">Add Products</h2>
+      <h2 className='mb-5 text-muted fs-4 text-center'>
+      <span><i className="fas fa-add fs-4"></i></span> Add Products & Pets
+      </h2>
         <form onSubmit={handleSubmit}>
           <div className='mb-3'>
             {/* <label htmlFor="productName" className='form-label'>Name</label> */}
@@ -77,9 +79,9 @@ const CreateProducts = () => {
               onChange={handleImageChange}
             />
           </div>
-          <div className='d-grid gap-2'>
-            <button type="submit" className='btn btn-success w-100'>Submit</button>
-            <button type="reset" className="btn btn-light w-100">Clear</button>
+          <div className='d-flex justify-content-between'>
+          <button type="submit" className="btn btn-success me-2" style={{ width: '48%' }}>Submit</button> 
+          <button type="reset" className="btn btn-light border border-dark" style={{ width: '48%' }}>Clear</button>
           </div>
         </form>
       </div>

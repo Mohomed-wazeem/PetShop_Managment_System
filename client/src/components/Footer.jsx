@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-free/css/all.min.css'; // Include FontAwesome for icons
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Footer = () => {
   return (
@@ -8,7 +8,6 @@ const Footer = () => {
       <div className="container">
         <div className="row justify-content-center text-center">
           
-          {/* Quick Links */}
           <div className="col-md-3 col-lg-3 col-xl-3 mb-4">
             <h5 className="text-uppercase mb-4 font-weight-bold text-info">Quick Links</h5>
             <p><a href="/Home" className="text-white" style={{ textDecoration: 'none' }}>Home</a></p>
@@ -16,7 +15,6 @@ const Footer = () => {
             <p><a href="/ContactUs" className="text-white" style={{ textDecoration: 'none' }}>Contact Us</a></p>
           </div>
 
-          {/* Contact Info */}
           <div className="col-md-3 col-lg-3 col-xl-3 mb-4">
             <h5 className="text-uppercase mb-4 font-weight-bold text-info">Contact Info</h5>
             <p><i className="fas fa-home mr-2"></i> 123 Pet St, Petville, PA 12345</p>
@@ -24,7 +22,6 @@ const Footer = () => {
             <p><i className="fas fa-phone mr-2"></i> +94-755158190</p>
           </div>
 
-          {/* Follow Us */}
           <div className="col-md-3 col-lg-3 col-xl-3 mb-4">
             <h5 className="text-uppercase mb-4 font-weight-bold text-info">Follow Us</h5>
             <a href="https://web.facebook.com/?_rdc=1&_rdr" className="text-white mx-2">
@@ -45,7 +42,6 @@ const Footer = () => {
 
         <hr className="mb-4" />
 
-        {/* Copyright */}
         <div className="row">
           <div className="col-md-12 text-center">
             <p className="mb-0">© 2024 Pet Shop. All Rights Reserved.</p>

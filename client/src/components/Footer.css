@@ -1,19 +1,22 @@
 .footer {
-  background-color: #343a40; /* Dark grey background */
+  background-color: #343a40; 
   color: white;
   padding: 10px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
 }
 
 .footer a {
   color: white;
-  text-decoration: none; /* Remove underline from links */
+  text-decoration: none; 
   transition: color 0.2s;
   padding: 5px;
 }
 
 .footer a:hover {
-  color: #ffc107; /* Bootstrap yellow for hover */
+  color: #ffc107;
 }
 
 .footer p {

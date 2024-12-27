@@ -8,7 +8,7 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/orders')
+    axios.get('http://localhost:3002/orders')
       .then(result => setOrders(result.data))
       .catch(err => console.log(err));
   }, []);

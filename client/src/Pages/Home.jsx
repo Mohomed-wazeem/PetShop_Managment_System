@@ -172,7 +172,7 @@ const Home = () => {
         </Row>
       </Container>
 
-      <Container className="my-5">
+  <Container className="my-5">
       {/* Shop By Categories Section */}
       <Container className="my-5">
   <Row>
