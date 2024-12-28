@@ -15,7 +15,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/signup', formData);
+      const response = await axios.post('http://localhost:3002/signup', formData);
       alert(response.data.message); // Show success message
       navigate('/login'); // Redirect to login page
     } catch (error) {

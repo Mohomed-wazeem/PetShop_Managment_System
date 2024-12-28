@@ -7,16 +7,14 @@ const ProductModel = require('./models/Products');
 const OrderModel = require('./models/Order');
 const AdminAccount = require('./models/AdminAccount');
 
-
 const app = express();
 const JWT_SECRET = process.env.JWT_SECRET || 'yourSecretKey';
 
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 
-// Remove deprecated options
+// Connect to MongoDB
 mongoose.connect('mongodb+srv://wazeem:Secret789@cluster0.x0ysh.mongodb.net/PetShop')
-
   .then(() => {
     console.log('Connected to MongoDB');
   })
@@ -24,19 +22,19 @@ mongoose.connect('mongodb+srv://wazeem:Secret789@cluster0.x0ysh.mongodb.net/PetS
     console.error('Error connecting to MongoDB:', error.message);
   });
 
-  //  //Middleware to verify JWT
- const authenticationToken = (req, res, next) => {
-    const token = req.headers['authorization'];
-    if(!token) return res.status(401).json({messsage: 'Access Denied'});
+// Middleware to verify JWT
+const authenticationToken = (req, res, next) => {
+  const token = req.headers['authorization'];
+  if (!token) return res.status(401).json({ message: 'Access Denied' });
 
-    jwt.verify(token.split(' ')[1], JWT_SECRET, (err, user) => {
-      if(err) return res.status(403).json({message: 'Invalid Token'});
-      req.user = user;
-      next();
-    });
- };
+  jwt.verify(token.split(' ')[1], JWT_SECRET, (err, user) => {
+    if (err) return res.status(403).json({ message: 'Invalid Token' });
+    req.user = user;
+    next();
+  });
+};
 
-// User Signup API
+// User Schema and Model
 const userSchema = new mongoose.Schema({
   username: String,
   email: { type: String, unique: true },
@@ -44,6 +42,7 @@ const userSchema = new mongoose.Schema({
 });
 const UserModel = mongoose.model('User', userSchema);
 
+// User Signup API
 app.post('/signup', async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -66,36 +65,22 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-
 // User Login API
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
-  console.log('Login API called');
-  console.log('Received email:', email);
-  console.log('Received password:', password);
-
   try {
-    // Find user by email
     const user = await UserModel.findOne({ email });
     if (!user) {
-      console.log('User not found in the database for email:', email);
       return res.status(400).json({ message: 'Invalid email or password' });
     }
-    console.log('User found in the database:', user);
 
-    // Compare password
     const isPasswordValid = await bcrypt.compare(password, user.password);
-    console.log('Password comparison result:', isPasswordValid);
-
     if (!isPasswordValid) {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
 
-    // Generate JWT
     const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
-    console.log('JWT Token generated:', token);
-
     res.json({ token, message: 'Login successful' });
   } catch (err) {
     console.error('Error during login:', err.message);
@@ -103,21 +88,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-
-
- // Example Protected Route
-const authenticateToken = (req, res, next) => {
-  const token = req.headers['authorization'];
-  if (!token) return res.status(401).json({ message: 'Access Denied' });
-
-  jwt.verify(token.split(' ')[1], JWT_SECRET, (err, user) => {
-    if (err) return res.status(403).json({ message: 'Invalid Token' });
-    req.user = user;
-    next();
-  });
-};
-
-// AdminLogin API
+// Admin Login API
 app.post('/admin/login', async (req, res) => {
   const { username, password } = req.body;
 
@@ -148,7 +119,20 @@ app.put('/admin', (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-// API to get products
+// API to get a single product by ID
+app.get('/products/:id', (req, res) => {
+  ProductModel.findById(req.params.id)
+    .then((product) => {
+      if (product) {
+        res.json(product);
+      } else {
+        res.status(404).json({ message: 'Product not found' });
+      }
+    })
+    .catch((err) => res.status(400).json(err));
+});
+
+// API to get all products
 app.get('/products', (req, res) => {
   ProductModel.find({})
     .then((products) => res.json(products))

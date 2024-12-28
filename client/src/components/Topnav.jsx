@@ -1,40 +1,34 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar'; 
-import "./Topnav.css";
+import React from 'react';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'React-router-dom';
+import './Topnav.css';
 import logo from '../images/navlogo.png';
 
 const Topnav = () => {
   return (
-    
     <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <Navbar.Brand href="#home">
-        <img 
-            src={logo} 
-            alt="nav_logo" 
-            width="250" 
-            height="45" 
+      <Container fluid>
+        <Navbar.Brand as={Link} to="/">
+          <img
+            src={logo}
+            alt="nav_logo"
             className="d-inline-block align-top"
+            style={{ maxWidth: '100%', height: 'auto', maxHeight: '40px' }} // Ensure the logo is responsive
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="navl">
-            <Nav.Link href="/Home">Home</Nav.Link>
-            <Nav.Link href="/AboutUs">AboutUS</Nav.Link>
-            <Nav.Link href="/AvailableItems">Available</Nav.Link>
-            <Nav.Link href="/ContactUs">Contact Us</Nav.Link>
-            <Nav.Link href="/signup" className="bold-link">SignUp</Nav.Link>
-
-            {/* <Link to="/AdminLogin" className='btn btn-danger mb-3'>Admin</Link> */}
+          <Nav className="ms-auto">
+            <Nav.Link as={Link} to="/Home">Home</Nav.Link>
+            <Nav.Link as={Link} to="/AboutUs">About Us</Nav.Link>
+            <Nav.Link as={Link} to="/AvailableItems">Available</Nav.Link>
+            <Nav.Link as={Link} to="/ContactUs">Contact Us</Nav.Link>
+            <Nav.Link as={Link} to="/signup" className="bold-link">Sign Up</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  )
-}
+  );
+};
 
-export default Topnav
-
+export default Topnav;

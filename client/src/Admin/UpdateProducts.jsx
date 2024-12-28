@@ -53,10 +53,9 @@ const UpdateProducts = () => {
   return (
     <div className="container-fluid d-flex vh-100 bg-light justify-content-center align-items-center">
       <div className="col-10 col-md-6 col-lg-4 bg-white rounded p-4 shadow-lg" style={{ maxHeight: '90vh', overflowY: 'auto' }}>
-      <h2 className='mb-5 text-muted fs-4'>
-      <span><i className="fas fa-edit fs-4"></i></span> Update Products
-      </h2>
-         
+        <h2 className='mb-5 text-muted fs-4'>
+          <span><i className="fas fa-edit fs-4"></i></span> Update Products
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="productName" className="form-label">Product Name</label>

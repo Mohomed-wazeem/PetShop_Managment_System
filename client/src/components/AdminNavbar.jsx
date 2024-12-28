@@ -1,43 +1,42 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar'; 
-import "./Topnav.css";
+import React from 'react';
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Link, useNavigate } from 'React-router-dom'
+import './Topnav.css';
 import logo from '../images/navlogo.png';
 
-const AdminNavbar = () => {
-
-  // const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem('adminLoggedIn'); // Remove session
-    navigate('/home');
+const Topnav = () => {
+  const navigate = useNavigate(); 
+  
+  const handleLogout = () => { 
+    localStorage.removeItem('adminLoggedIn'); 
+    navigate('/home'); 
   };
 
   return (
-    
     <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-      <Navbar.Brand href="#home">
-        <img 
-            src={logo} 
-            alt="nav logo" 
-            width="250" 
-            height="45" 
+      <Container fluid>
+        <Navbar.Brand as={Link} to="/">
+          <img
+            src={logo}
+            alt="nav_logo"
             className="d-inline-block align-top"
+            style={{ maxWidth: '100%', height: 'auto', maxHeight: '40px' }} // Ensure the logo is responsive
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="navl">
-            <Nav.Link href="/Products">Products</Nav.Link>
-            <Nav.Link href="/Orders">Orders</Nav.Link>
-            <Nav.Link href="/Account">Accounts</Nav.Link>
-            <Nav.Link href="/Home" onClick={handleLogout}>Logout</Nav.Link>
+          <Nav className="ms-auto">
+            <Nav.Link as={Link} to="/Products">Products</Nav.Link>
+            <Nav.Link as={Link} to="/Orders">Orders</Nav.Link>
+            <Nav.Link as={Link} to="/Account">Accounts</Nav.Link>
+            <Nav.Link as={Link} to="/Home" onClick={handleLogout}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  )
-}
+  );
+};
 
-export default AdminNavbar
+export default Topnav;
+
+

@@ -190,14 +190,14 @@ const Home = () => {
       <Carousel.Item key={index}>
         <Row className="justify-content-center">
           {categories
-            .slice(index * 4, index * 4 + 4) // Show 4 items per slide
+            .slice(index * 4, index * 4 + 3) // Show 4 items per slide
             .map((category, i) => (
               <Col
                 key={i}
                 md={3}
-                sm={3}
-                xs={12}
-                className="mb-4 text-center category-card"
+                sm={4}
+                xs={10}
+                className="mb-4 text-justify category-card"
               >
                 <Card className="border-0 h-100 bg-light shadow-lg custom-card">
                   <Card.Img
@@ -206,17 +206,17 @@ const Home = () => {
                     className="rounded img-fluid custom-card-img"
                     style={{
                       objectFit: 'cover',
-                      height: "180px", // Set consistent height for images
+                      height: "130px", // Set consistent height for images
                       width: '100%',
                     }}
                   />
-                  <Card.Body className="d-flex flex-column">
+                  <Card.Body className="d- flex-column">
                     <Card.Title>{category.title}</Card.Title>
                     <Card.Text
                       className="flex-grow-1 description-text"
                       style={{
                         fontSize: '14px',
-                        height: '80px', // Control the height for description space
+                        height: '90px', // Control the height for description space
                         overflow: 'hidden', // Hide excess text
                       }}
                     >

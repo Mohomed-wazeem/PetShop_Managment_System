@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'React-router-dom';
 import './AdminLogin.css';
 
@@ -7,6 +6,13 @@ const AdminLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const isAdminLoggedIn = !!localStorage.getItem('adminLoggedIn');
+    if (isAdminLoggedIn) {
+      navigate('/Products'); // Redirect to products if already logged in
+    }
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -24,8 +30,8 @@ const AdminLogin = () => {
         const data = await response.json();
         alert(data.message);
 
-        //set admin login session
-        localStorage.setItem('adminLoggedIn',true);
+        // Set admin login session
+        localStorage.setItem('adminLoggedIn', 'true');
         navigate('/Products');
       } else {
         const error = await response.json();
@@ -58,7 +64,6 @@ const AdminLogin = () => {
                 <button type="submit" className="btn btn-primary btn-block">Login</button>
                 <button type="button" className="btn btn-light btn-block" onClick={handleReset}>Clear</button>
               </div>
-
             </form>
           </div>
         </div>
