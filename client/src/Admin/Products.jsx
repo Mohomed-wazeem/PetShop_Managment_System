@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Products.css';
-import { Link } from 'React-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import loading2 from '../images/loading2.gif';  // Correct import path
 

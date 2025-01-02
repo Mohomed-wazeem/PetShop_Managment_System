@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import { useNavigate, useParams } from 'React-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const UpdateProducts = () => {
   const { id } = useParams();

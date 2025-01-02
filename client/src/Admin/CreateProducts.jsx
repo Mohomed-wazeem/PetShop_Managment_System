@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './CreateProducts.css';
 import axios from 'axios';
-import {useNavigate} from 'React-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 
 const CreateProducts = () => {

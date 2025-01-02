@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link, useNavigate } from 'React-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Topnav.css';
 import logo from '../images/navlogo.png';
 

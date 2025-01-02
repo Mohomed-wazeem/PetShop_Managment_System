@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate } from 'React-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ children, isAdminLoggedIn }) => {
   return isAdminLoggedIn ? children : <Navigate to="/AdminLogin" replace />;

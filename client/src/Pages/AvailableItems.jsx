@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import loading2 from '../images/loading2.gif';  // Correct import path
+import loading2 from '../images/loading2.gif';  
 import './AvailableItems.css';
 
 const AvailableItems = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);  // Add loading state
+  const [loading, setLoading] = useState(true);  
   const [showForm, setShowForm] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [formData, setFormData] = useState({
