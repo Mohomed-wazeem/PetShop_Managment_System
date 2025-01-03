@@ -29,27 +29,40 @@ const Orders = () => {
     }
   };
 
-
   const generateReceipt = (order) => {
     const doc = new jsPDF();
     const deliveryCharge = 400;
     const totalPrice = order.productPrice * order.customerQuantity + deliveryCharge;
-    
-    doc.text('Pet zone', 20, 10);
-    doc.text('Customer Information:', 20, 20);
-    doc.text(`Name: ${order.customerName}`, 20, 30);
-    doc.text(`Email: ${order.customerEmail}`, 20, 40);
-    doc.text(`Address: ${order.customerAddress}`, 20, 50);
-    doc.text(`Contact: ${order.customerContact}`, 20, 60);
 
-    doc.text('Ordered Product', 20, 80);
-   // doc.text(`Product ID: ${order.productId}`, 20, 90);
-    doc.text(`Name: ${order.productName}`, 20, 100);
-    doc.text(`Price: $${order.productPrice}`, 20, 110);
-    doc.text(`Quantity: ${order.customerQuantity}`, 20, 120);
-    doc.text(`Delivery Charge: $${deliveryCharge}`, 20, 130);
-    doc.text(`Total Price: $${totalPrice}`, 20, 140);
+    // Set the font size and style for the title
+    doc.setFontSize(20);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(0, 102, 204); // Set the color to a shade of blue
+    doc.text('Welcome to our pupptail', 105, 20, null, null, 'center');
 
+    // Reset the font size and style for the rest of the content
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(0, 0, 0); // Set the color to black
+
+    // Customer Information
+    doc.text('Customer Information:', 20, 40);
+    doc.text(`Name: ${order.customerName}`, 20, 50);
+    doc.text(`Email: ${order.customerEmail}`, 20, 60);
+    doc.text(`Address: ${order.customerAddress}`, 20, 70);
+    doc.text(`Contact: ${order.customerContact}`, 20, 80);
+
+    // Ordered Product
+    doc.setTextColor(255, 0, 0); // Set the color to red
+    doc.text('Ordered Product', 20, 100);
+    doc.setTextColor(0, 0, 0); // Reset the color to black
+    doc.text(`Name: ${order.productName}`, 20, 110);
+    doc.text(`Price: $${order.productPrice}`, 20, 120);
+    doc.text(`Quantity: ${order.customerQuantity}`, 20, 130);
+    doc.text(`Delivery Charge: $${deliveryCharge}`, 20, 140);
+    doc.text(`Total Price: $${totalPrice}`, 20, 150);
+
+    // Save the document
     doc.save('receipt.pdf');
   };
 
