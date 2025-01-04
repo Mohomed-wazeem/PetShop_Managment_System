@@ -40,10 +40,9 @@ npm start
 Start the frontend development server:
 
 Go to the client directory and run:
-Copy code
 npm run dev
 
 Admin Login
 The admin login page is available at: http://localhost:5173/AdminLogin
-username - admin
+username - admin, 
 password - 123
