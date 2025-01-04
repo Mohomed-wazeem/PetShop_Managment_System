@@ -45,3 +45,5 @@ npm run dev
 
 Admin Login
 The admin login page is available at: http://localhost:5173/AdminLogin
+username - admin
+password - 123
