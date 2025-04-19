@@ -16,11 +16,9 @@ const Orders = () => {
   const handleOrderAction = (orderId, action) => {
     switch(action) {
       case 'deliver':
-        // Add logic to mark the order as delivered
         alert(`Order ${orderId} delivered`);
         break;
       case 'download':
-        // Generate and download the receipt
         const order = orders.find(order => order._id === orderId);
         generateReceipt(order);
         break;
@@ -34,16 +32,14 @@ const Orders = () => {
     const deliveryCharge = 400;
     const totalPrice = order.productPrice * order.customerQuantity + deliveryCharge;
 
-    // Set the font size and style for the title
     doc.setFontSize(20);
     doc.setFont('helvetica', 'bold');
-    doc.setTextColor(0, 102, 204); // Set the color to a shade of blue
-    doc.text('Welcome to our pupptail', 105, 20, null, null, 'center');
+    doc.setTextColor(0, 102, 204); 
+    doc.text('Welcome to our pupptail Store', 105, 20, null, null, 'center');
 
-    // Reset the font size and style for the rest of the content
     doc.setFontSize(12);
     doc.setFont('helvetica', 'normal');
-    doc.setTextColor(0, 0, 0); // Set the color to black
+    doc.setTextColor(0, 0, 0); 
 
     // Customer Information
     doc.text('Customer Information:', 20, 40);
@@ -53,16 +49,15 @@ const Orders = () => {
     doc.text(`Contact: ${order.customerContact}`, 20, 80);
 
     // Ordered Product
-    doc.setTextColor(255, 0, 0); // Set the color to red
+    doc.setTextColor(255, 0, 0); 
     doc.text('Ordered Product', 20, 100);
-    doc.setTextColor(0, 0, 0); // Reset the color to black
+    doc.setTextColor(0, 0, 0); 
     doc.text(`Name: ${order.productName}`, 20, 110);
-    doc.text(`Price: $${order.productPrice}`, 20, 120);
+    doc.text(`Price: Rs.${order.productPrice}`, 20, 120);
     doc.text(`Quantity: ${order.customerQuantity}`, 20, 130);
-    doc.text(`Delivery Charge: $${deliveryCharge}`, 20, 140);
-    doc.text(`Total Price: $${totalPrice}`, 20, 150);
+    doc.text(`Delivery Charge: Rs.${deliveryCharge}`, 20, 140);
+    doc.text(`Total Price: Rs.${totalPrice}`, 20, 150);
 
-    // Save the document
     doc.save('receipt.pdf');
   };
 
